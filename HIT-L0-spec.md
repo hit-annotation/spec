@@ -1,17 +1,17 @@
-# HIT アノテーション規格 L0（ラベル表記）提案
+# HIT アノテーション規格 `L0` (ラベル表記) v0.1.1
 
-> **本文書のHIT表記:** `HIT-C10-SPRT`
+> **本文書のHIT表記:** `HIT-C9-SPORT`
 >
 > | 項目 | 内容 |
 > | --- | --- |
 > | 使用AI | Anthropic Claude Opus 5.5 |
 > | 生成日 | 2026-11-15 |
-> | M属性 | C10: 申告者の草稿と指示に基づき、AIが全文を作成した |
-> | T属性 | S, P, R, T（開示対象は「付録A 本文書の開示対象」を参照） |
+> | M属性 | C9: 申告者の草稿と指示に基づき、AIが全文を作成し、申告者が修正を加えた |
+> | T属性 | S, P, O, R, T（開示対象は「付録A 本文書の開示対象」を参照） |
 >
-> **ライセンス:** 本文書は [クリエイティブ・コモンズ 表示-継承 4.0 国際（CC BY-SA 4.0）](https://creativecommons.org/licenses/by-sa/4.0/deed.ja) の下で提供される。
+> **ライセンス:** 本文書は [クリエイティブ・コモンズ 表示-継承 4.0 国際（CC BY 4.0）](https://creativecommons.org/licenses/by/4.0/deed.ja) の下で提供される。
 >
-> © 2026 [申告者名]
+> © 2026 Youmei Masada
 
 ---
 
@@ -20,8 +20,8 @@
 | 項目 | 内容 |
 | --- | --- |
 | 文書名 | HIT アノテーション規格 L0（ラベル表記） |
-| 版 | 0.1（提案） |
-| 状態 | 草案。規範的な内容は今後変更されうる。 |
+| 版 | 0.1.0（提案） |
+| 状態 | 草案。規約および規範的な内容は今後変更されうる。 |
 | 適用範囲 | 申告水準 L0。L1 および L2 は別の文書で定める。 |
 | 記述言語 | 日本語。各言語への翻訳を前提として記述する。 |
 
@@ -34,7 +34,7 @@
 | 区分 | 名称 |
 | --- | --- |
 | 正式名称 | Human Indication and Traceability (HIT) Annotation |
-| 日本語名称 | 人跡証憑（略称: 人証） |
+| 日本語名称 | 人跡証憑（通称: 人証） |
 | 表記上の識別子 | `HIT` |
 
 ### 1.2 目的
@@ -105,38 +105,22 @@ HIT表記は次の構造を持つ。
 
 ```text
 HIT-<M属性>-<T属性>
+または
+HIT-<M属性>
 ```
 
 1. 接頭辞は `HIT` とする。
 2. 接頭辞、M属性、T属性の間はハイフンマイナス `-`（U+002D）で区切る。
-3. M属性とT属性は、いずれも省略してはならない。
+3. M属性は省略してはならない。
+4. T属性は、トレーサビリティ情報が付与されない場合に限って省略できる。
 
-### 4.2 形式文法
+### 4.2 追加の構文規則
 
-形式文法を [ABNF（RFC 5234）](https://www.rfc-editor.org/rfc/rfc5234) で示す。大文字と小文字を区別するため、文字は文字コードで指定する。
-
-```abnf
-hit-label = %x48.49.54 "-" m-field "-" t-field   ; "HIT"
-
-m-field   = h-flag / m-item *( "/" m-item )
-h-flag    = %x48                                  ; "H"
-m-item    = m-flag degree
-m-flag    = %x43 / %x63 / %x41 / %x54             ; "C" / "c" / "A" / "T"
-degree    = "10" / %x31-39                        ; 1 から 10
-
-t-field   = n-flag / 1*6t-flag
-n-flag    = %x4E                                  ; "N"
-t-flag    = %x53 / %x50 / %x4F / %x52 / %x54 / %x43
-                                                  ; "S" / "P" / "O" / "R" / "T" / "C"
-```
-
-### 4.3 追加の構文規則
-
-1. フラグは大文字と小文字を区別する。`C` と `c` は異なるフラグである。
+1. フラグはアルファベット大文字で記述する。
 2. 一つの属性の中で、同じフラグを2回以上記載してはならない。
 3. 表記に空白を含めてはならない。
 4. 申告者は、フラグを次の正準順序で記載すべきである。表記を解析する者は、順序の違いを許容すべきである。
-   - M属性: `C`, `c`, `A`, `T`
+   - M属性: `C`, `D`, `A`, `T`
    - T属性: `S`, `P`, `O`, `R`, `T`, `C`
 5. 英字 `C` と `T` は、M属性とT属性の両方に現れる。その意味は、記載された属性の位置によって決まる。
 
@@ -151,7 +135,7 @@ M属性は、対象コンテンツへのAIの関与の種類と程度を表す�
 | フラグ | 名称 | 意味 | 度数値 | 対応する IPTC Digital Source Type（参考） |
 | --- | --- | --- | --- | --- |
 | `C` | 共作 | 人間の構想に基づいてAIが作成した。または人間とAIが共同で作成した。 | 必須 | [compositeWithTrainedAlgorithmicMedia](http://cv.iptc.org/newscodes/digitalsourcetype/compositeWithTrainedAlgorithmicMedia) |
-| `c` | 構想委任 | AIに構想を委ね、人間が追加の指示と選択を行って作成した。 | 必須 | [trainedAlgorithmicMedia](http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia) |
+| `D` | 構想委任 | AIに構想を委ね、人間が追加の指示と選択を行って作成した。 | 必須 | [trainedAlgorithmicMedia](http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia) |
 | `A` | 補正 | 人間による原著に対し、AIが補正、校訂、または部分的な修正を行った。 | 必須 | [algorithmicallyEnhanced](http://cv.iptc.org/newscodes/digitalsourcetype/algorithmicallyEnhanced) |
 | `T` | 翻訳 | AIが原著を翻訳した。 | 必須 | [algorithmicallyEnhanced](http://cv.iptc.org/newscodes/digitalsourcetype/algorithmicallyEnhanced) |
 | `H` | 人間作成 | AIの関与がない。 | 付与しない | [digitalCreation](http://cv.iptc.org/newscodes/digitalsourcetype/digitalCreation) |
@@ -161,23 +145,24 @@ IPTC Digital Source Type との対応は参考である。L1 の機械可読メ�
 ### 5.2 併用の規則
 
 1. `H` は、他のすべてのM属性フラグと併用してはならない。
-2. `C`、`c`、`A` は、相互に併用してはならない。
-3. `T` は、`C`、`c`、`A` のいずれとも併用してよい。
+2. `C` と `D` は、相互に併用してはならない。
+3. `A` は、`C`、`D`、`T` のいずれとも併用してよい。
+4. `T` は、`C`、`D`、`A` のいずれとも併用してよい。
 
-| | `C` | `c` | `A` | `T` | `H` |
+| | `C` | `D` | `A` | `T` | `H` |
 | --- | --- | --- | --- | --- | --- |
-| `C` | — | 不可 | 不可 | 可 | 不可 |
-| `c` | 不可 | — | 不可 | 可 | 不可 |
-| `A` | 不可 | 不可 | — | 可 | 不可 |
-| `T` | 可 | 可 | 可 | — | 不可 |
-| `H` | 不可 | 不可 | 不可 | 不可 | — |
+| `C` | — | ✘ | ✅ | ✅ | ✘ |
+| `D` | ✘ | — | ✅ | ✅ | ✘ |
+| `A` | ✅ | ✅ | — | ✅ | ✘ |
+| `T` | ✅ | ✅ | ✅ | — | ✘ |
+| `H` | ✘ | ✘ | ✘ | ✘ | — |
 
 ### 5.3 度数値
 
 1. 度数値は、対象コンテンツ全体のうち、当該フラグの関与を受けた部分の割合を10段階で表す。`1` はおよそ1割、`10` は全体を意味する。
 2. 度数値は 1 以上 10 以下の整数とする。
 3. 割合を算出する基準（文字数、行数、再生時間、面積など）は、申告者が選ぶ。申告者は、算出の基準を併記してもよい。
-4. 端数は四捨五入する。ただし、関与があり、その割合が1割未満の場合は `1` とする。
+4. 端数は四捨五入する。ただし、関与があり、その割合が1割未満の場合は `1`、10割未満の場合は `9` とする。
 5. 複数のフラグを用いる場合、度数値はフラグごとに独立して算出する。度数値の合計が10を超えてもよい。
 
 例: `C3/T10` は、AIがコンテンツのおよそ3割を作成し、さらに全文を翻訳したことを表す。
@@ -224,7 +209,7 @@ L0 における `C` は、証明手段が存在することの表明である。
 | `HIT-C4-N` | 人間の構想に基づいてAIがおよそ4割を作成し、申告者が残りを作成および編集した共作。追跡のための情報はない。 |
 | `HIT-A1/T10-POR` | 申告者が作成した原著に対し、AIがおよそ1割を補正し、全文を翻訳した。プロンプト（システムプロンプトを除く）の全文、原著と編集前のAI生成コンテンツ、参照文献の一覧を添付している。 |
 | `HIT-C10-SP` | AIが全文を作成し、申告者が全文をレビューしたが修正していない。システムプロンプトを含むプロンプトの全文を添付している。（レビューの有無は表記で表せないため、併記事項に記載する。） |
-| `HIT-c10-PT` | AIに構想を委ね、申告者の指示と選択により全文を作成した。プロンプトの全文と生成日時を開示している。 |
+| `HIT-D10-PT` | AIに構想を委ね、申告者の指示と選択により全文を作成した。プロンプトの全文と生成日もしくは生成日時を開示している。 |
 | `HIT-H-TC` | 人間が作成し、AIの関与はない。作成日時を開示し、電子署名により作成者を証明できる。 |
 | `HIT-H-N` | 人間が作成し、AIの関与はない。追跡のための情報はない。 |
 
@@ -232,10 +217,10 @@ L0 における `C` は、証明手段が存在することの表明である。
 
 | 表記 | 理由 |
 | --- | --- |
-| `HIT-C4/A2-N` | `C` と `A` は併用できない（5.2）。 |
+| `HIT-H/A2-N` | `H` と `A` は併用できない（5.2）。 |
 | `HIT-H3-N` | `H` には度数値を付けない（5.1）。 |
 | `HIT-C11-N` | 度数値の上限は 10 である（5.3）。 |
-| `HIT-C4` | T属性は省略できない（4.1）。 |
+| `HIT-S` | M属性は省略できない（4.1）。 |
 | `HIT-H-SP` | M属性が `H` の場合、`S` と `P` は付与できない（6.2）。 |
 | `HIT-C4-PN` | `N` は他のフラグと併用できない（6.1）。 |
 
@@ -259,11 +244,11 @@ L0 における `C` は、証明手段が存在することの表明である。
 ```text
 HIT-<表記>
 AI: <提供者名> <モデル名>[, <提供者名> <モデル名> ...]
-日付: <YYYY-MM-DD>[ / <YYYY-MM-DD>]
+作成日/作成日時: <YYYY-MM-DD>[T<hh:mm>+<shift>]
 開示対象: <所在>
 ```
 
-1. 日付は [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) の形式で記載する。期間の場合は開始日と終了日を `/` で区切る。
+1. 作成日もしくは作成日時は [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) の形式で記載する。
 2. 必要に応じて、次の事項を併記してもよい。
    - 度数値の算出基準
    - 開示対象から除外した情報の有無と箇所
@@ -330,7 +315,7 @@ AI: <提供者名> <モデル名>[, <提供者名> <モデル名> ...]
 ### 10.5 権利の移転を伴う著作物（受託制作、受託開発など）
 
 1. 納品物にHIT表記を付し、契約で求められる場合は開示対象を添付する。開示対象には、差分（diff）単位での生成過程の記録を含めてもよい。
-2. 表記の正確性に関する責任と保証は、契約で定める。本規格は定めない。
+2. 表記の正確性に関する責任と保証は、契約で定める。本規格は契約の内容に対して一切の制限を加えない。
 
 ### 10.6 秘密保持契約の下での提供
 
@@ -367,8 +352,9 @@ AI: <提供者名> <モデル名>[, <提供者名> <モデル名> ...]
 
 | フラグ | 内容 | 所在 |
 | --- | --- | --- |
-| `S` | 申告者が設定したシステムプロンプト。プラットフォームの運営者が設定した非公開の部分は含まない。 | [申告者が添付する] |
-| `P` | 本文書の生成に用いたプロンプトの全文 | [申告者が添付する] |
+| `S` | 申告者が設定したシステムプロンプト。プラットフォームの運営者が設定した非公開の部分は含まない。 | [prompts](./archives/prompts/) |
+| `P` | 本文書の生成に用いたプロンプトの全文 | [prompts](./archives/prompts/) |
+| `O` | 規約ドキュメントの原稿 | [HIT-base-doc-v0.0.1.md](./HIT-base-doc-v0.0.1.md) |
 | `R` | 参照文献の一覧 | 付録B |
 | `T` | 生成日: 2026-11-15 | 本文書冒頭の表記欄 |
 
@@ -376,12 +362,11 @@ AI: <提供者名> <モデル名>[, <提供者名> <モデル名> ...]
 
 ## 付録B 参照文献
 
-1. 申告者による草稿「Human Indication and Traceability (HIT) Annotation 概要」（本文書の生成時にAIへ提供）
+1. [草稿「Human Indication and Traceability (HIT) Annotation 概要」（本文書の生成時にAIへ提供）](./HIT-base-doc-v0.0.1.md)
 2. IPTC, Digital Source Type vocabulary: <https://cv.iptc.org/newscodes/digitalsourcetype/>
 3. Creative Commons, 表示-継承 4.0 国際 リーガルコード: <https://creativecommons.org/licenses/by-sa/4.0/legalcode.ja>
 4. RFC 2119, Key words for use in RFCs to Indicate Requirement Levels: <https://www.rfc-editor.org/rfc/rfc2119>
-5. RFC 5234, Augmented BNF for Syntax Specifications: ABNF: <https://www.rfc-editor.org/rfc/rfc5234>
-6. SPDX Specification: <https://spdx.dev/>
-7. Apache License, Version 2.0: <https://www.apache.org/licenses/LICENSE-2.0>
-8. C2PA (Coalition for Content Provenance and Authenticity): <https://c2pa.org/>
-9. ISO 8601, Date and time format: <https://www.iso.org/iso-8601-date-and-time-format.html>
+5. SPDX Specification: <https://spdx.dev/>
+6. Apache License, Version 2.0: <https://www.apache.org/licenses/LICENSE-2.0>
+7. C2PA (Coalition for Content Provenance and Authenticity): <https://c2pa.org/>
+8. ISO 8601, Date and time format: <https://www.iso.org/iso-8601-date-and-time-format.html>
