@@ -1,0 +1,22 @@
+title: HIT — A Label That Shows How AI Was Involved
+description: An annotation label for contents made with Human-AI co-creation
+
+url: "https://hit-annotation.github.io"
+baseurl: "/spec"
+
+theme: minima
+
+header_pages:
+  - index.md
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "page"
+
+# ビルド対象外
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
