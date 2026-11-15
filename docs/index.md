@@ -192,7 +192,7 @@ Disclosures: <where they are published>
 
 At present, only the specification for **L0**, the human-readable label level, is available. The specifications for machine-readable metadata (L1) and signature-based verification (L2) have not yet been finalized.
 
-For details, see [HIT Annotation Specification L0 (Label Notation)](https://github.com/hit-annotation/docs/blob/main/HIT-L0-spec-v0.1.1.md) (in Japanese).
+For details, see [HIT Annotation Specification L0 (Label Notation)](https://github.com/hit-annotation/spec/blob/main/HIT-L0-spec-v0.1.1.md) (in Japanese).
 
 Issues and pull requests are welcome for further discussion.
 
@@ -212,10 +212,10 @@ Original label (Japanese version): HIT-C9-SPORT
 
 | Flag | Content | Location |
 | --- | --- | --- |
-| `S` | The system prompt set by the declarant. Non-public parts set by the platform operator are not included. | [archives/prompts](https://github.com/hit-annotation/docs/tree/main/archives/prompts) |
-| `P` | The full text of the prompts used to create this page, including its translation, and of the AI's responses | [archives/prompts](https://github.com/hit-annotation/docs/tree/main/archives/prompts) |
-| `O` | The Japanese original of this page, and the AI-generated content before editing. Both can be traced through the repository's commit history. | [Japanese version](../ja/index.md), [hit-annotation/docs](https://github.com/hit-annotation/docs) |
-| `R` | References: HIT Annotation Specification L0 v0.1.1, and the draft "HIT Annotation Overview" | [Specification](https://github.com/hit-annotation/docs/blob/main/HIT-L0-spec-v0.1.1.md), [Draft](https://github.com/hit-annotation/docs/blob/v0.1.0/HIT-base-doc-v0.0.1.md) |
+| `S` | The system prompt set by the declarant. Non-public parts set by the platform operator are not included. | [archives/prompts](https://github.com/hit-annotation/spec/tree/main/archives/prompts) |
+| `P` | The full text of the prompts used to create this page, including its translation, and of the AI's responses | [archives/prompts](https://github.com/hit-annotation/spec/tree/main/archives/prompts) |
+| `O` | The Japanese original of this page, and the AI-generated content before editing. Both can be traced through the repository's commit history. | [Japanese version](../ja/index.md), [hit-annotation/spec](https://github.com/hit-annotation/spec) |
+| `R` | References: HIT Annotation Specification L0 v0.1.1, and the draft "HIT Annotation Overview" | [Specification](https://github.com/hit-annotation/spec/blob/main/HIT-L0-spec-v0.1.1.md), [Draft](https://github.com/hit-annotation/spec/blob/v0.1.0/HIT-base-doc-v0.0.1.md) |
 | `T` | Created: 2026-11-15. Editing dates and times are recorded in the repository's commit history. | This page |
 
 This page is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
