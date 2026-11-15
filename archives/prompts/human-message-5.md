@@ -1,0 +1,1 @@
+矛盾点を解消する変更を施したspecを再提示せよ。なお、ローカライズ表記は廃止とし、T属性のPフラグ指定時には、指示文のみならずAI応答も全文を含めるべき旨を明記せよ。また、原稿へのリンクは https://github.com/hit-annotation/hit-spec/blob/v0.1.0/HIT-base-doc-v0.0.1.md として呈示してよい。
