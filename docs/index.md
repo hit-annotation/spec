@@ -24,7 +24,7 @@ How much was AI involved in this content?<br/>
 
 ## What is HIT?
 
-HIT (Human Indication and Traceability; Japanese name: 人跡証憑, short form: 人証) is a **self-declared label** for content made with AI.
+HIT (Human Indication and Traceability) is a **self-declared label** for content made with AI.
 
 You can attach it to any kind of content, including text, images, audio, video, and software. The label alone tells recipients two things:
 
@@ -97,7 +97,7 @@ flowchart LR
 
 ## Available Flags
 
-### M Attribute (Modification: AI Involvement)
+### M Attribute (Manipulation: AI Involvement)
 
 | Flag | Name | Meaning | Degree |
 | --- | --- | --- | --- |
@@ -138,7 +138,7 @@ flowchart TD
 | `P` | Prompts and responses | The full text of the instructions given to AI and of the AI's responses |
 | `O` | Original | The original work, or the AI-generated content before human editing |
 | `R` | References | A list of materials given to AI or consulted by AI |
-| `T` | Timestamps | The dates and times of creation and editing |
+| `T` | Timestamps | The dates or datea and times of creation and editing |
 | `V` | Verification | Proof of the model and the creator by digital signature or digital watermark |
 | `N` | None | No traceability information is disclosed (cannot be combined with other flags) |
 
@@ -192,7 +192,7 @@ Disclosures: <where they are published>
 
 At present, only the specification for **L0**, the human-readable label level, is available. The specifications for machine-readable metadata (L1) and signature-based verification (L2) have not yet been finalized.
 
-For details, see [HIT Annotation Specification L0 (Label Notation)](https://github.com/hit-annotation/spec/blob/main/HIT-L0-spec-v0.1.1.md) (in Japanese).
+For details, see [HIT Annotation Specification L0 (Label Notation)](https://github.com/hit-annotation/spec/blob/v0.1.1/HIT-L0-spec.md) (in Japanese).
 
 Issues and pull requests are welcome for further discussion.
 
@@ -215,7 +215,7 @@ Original label (Japanese version): HIT-C9-SPORT
 | `S` | The system prompt set by the declarant. Non-public parts set by the platform operator are not included. | [archives/prompts](https://github.com/hit-annotation/spec/tree/main/archives/prompts) |
 | `P` | The full text of the prompts used to create this page, including its translation, and of the AI's responses | [archives/prompts](https://github.com/hit-annotation/spec/tree/main/archives/prompts) |
 | `O` | The Japanese original of this page, and the AI-generated content before editing. Both can be traced through the repository's commit history. | [Japanese version](../ja/index.md), [hit-annotation/spec](https://github.com/hit-annotation/spec) |
-| `R` | References: HIT Annotation Specification L0 v0.1.1, and the draft "HIT Annotation Overview" | [Specification](https://github.com/hit-annotation/spec/blob/main/HIT-L0-spec-v0.1.1.md), [Draft](https://github.com/hit-annotation/spec/blob/v0.1.0/HIT-base-doc-v0.0.1.md) |
+| `R` | References: HIT Annotation Specification L0 v0.1.1, and the draft "HIT Annotation Overview" | [Specification](https://github.com/hit-annotation/spec/blob/v0.1.1/HIT-L0-spec.md), [Draft](https://github.com/hit-annotation/spec/blob/v0.1.0/HIT-base-doc-v0.0.1.md) |
 | `T` | Created: 2026-11-15. Editing dates and times are recorded in the repository's commit history. | This page |
 
 This page is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
