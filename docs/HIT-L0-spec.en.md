@@ -184,7 +184,7 @@ The T attribute expresses the types of information provided for tracing how the 
 | `P` | Prompts and responses | The full text of the prompts used for generation (excluding the system prompt) and the full text of the AI's response to each prompt are disclosed. |
 | `O` | Original | The original work, or the AI-generated content before editing, is disclosed. |
 | `R` | References | A list of the documents and materials given to the AI or consulted by the AI is disclosed. |
-| `T` | Timestamps | The dates and times of generation and editing are disclosed. |
+| `T` | Timestamps | The dates or dates and times of generation and editing are disclosed. |
 | `V` | Verification | The model used for generation and the creator can be proven by digital signature or digital watermark. |
 | `N` | None | No information for tracing is provided. MUST NOT be combined with other flags. |
 

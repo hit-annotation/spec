@@ -138,7 +138,7 @@ flowchart TD
 | `P` | プロンプトと応答 | AIへの指示文と、AIの応答の全文 |
 | `O` | 原本 | 原著、または人が編集する前のAI生成コンテンツ |
 | `R` | 参照情報 | AIに与えた、またはAIが参照した資料の一覧 |
-| `T` | 時刻情報 | 作成や編集の日時 |
+| `T` | 時刻情報 | 作成や編集の日付もしくは日時 |
 | `V` | 電子的証明 | 電子署名や電子透かしによる、モデルと作者の証明 |
 | `N` | なし | 追跡のための情報は開示していない（ほかのフラグと併用不可） |
 
@@ -188,7 +188,7 @@ AI: <提供者名> <モデル名>
 
 現在提供しているのは、人が読むラベル表記の水準 **L0** の仕様のみです。機械可読なメタデータ（L1）や、署名による検証（L2）の仕様は、まだ策定が完了していません。
 
-詳しくは [HIT アノテーション規格 L0（ラベル表記）](https://github.com/hit-annotation/spec/blob/main/HIT-L0-spec-v0.1.1.md) をご覧ください。
+詳しくは [HIT アノテーション規格 L0（ラベル表記）](https://github.com/hit-annotation/spec/blob/main/HIT-L0-spec.md) をご覧ください。
 
 さらなる議論のために、イシューやPRの提出も歓迎します。
 
@@ -210,7 +210,7 @@ AI: Anthropic Claude Opus 5.5
 | `S` | 申告者が設定したシステムプロンプト。プラットフォームの運営者が設定した非公開の部分は含まない。 | [archives/prompts](https://github.com/hit-annotation/spec/tree/main/archives/prompts) |
 | `P` | このページの作成に用いたプロンプトと、AIの応答の全文 | [archives/prompts](https://github.com/hit-annotation/spec/tree/main/archives/prompts) |
 | `O` | 編集前のAI生成コンテンツ。リポジトリのコミット履歴から追跡できる。 | [hit-annotation/spec](https://github.com/hit-annotation/spec) |
-| `R` | 参照資料: HIT アノテーション規格 L0 v0.1.1、草稿「HIT Annotation 概要」 | [規格](https://github.com/hit-annotation/spec/blob/main/HIT-L0-spec-v0.1.1.md)、[草稿](https://github.com/hit-annotation/spec/blob/v0.1.0/HIT-base-doc-v0.0.1.md) |
+| `R` | 参照資料: HIT アノテーション規格 L0 v0.1.1、草稿「HIT Annotation 概要」 | [規格](https://github.com/hit-annotation/spec/blob/main/HIT-L0-spec.md)、[草稿](https://github.com/hit-annotation/spec/blob/v0.1.0/HIT-base-doc-v0.0.1.md) |
 | `T` | 作成日: 2026-11-15。編集の日時はリポジトリのコミット履歴に記録されます。 | このページ |
 
 このページは [クリエイティブ・コモンズ 表示 4.0 国際（CC BY 4.0）](https://creativecommons.org/licenses/by/4.0/deed.ja) の下で提供されます。
